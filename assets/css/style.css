@@ -120,6 +120,19 @@ ul{list-style:none}
 .section--alt .step__dot{background:var(--surface)}
 .step h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.15;margin:20px 0 8px}
 .step p{font-size:14px;color:var(--muted)}
+.steps__link{display:inline-flex;align-items:center;gap:10px;margin-top:40px;padding-bottom:4px;border-bottom:1px solid var(--line-2);font-size:14px;letter-spacing:.04em;color:var(--gold);transition:border-color .2s,color .2s}
+.steps__link:hover{border-color:var(--gold);color:var(--gold-2)}
+
+/* Процесс: видео */
+#process .h2{margin-bottom:24px}
+#process .lead{margin-bottom:24px}
+.process-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;max-width:700px;margin:0 auto}
+.process-card{margin:0;width:100%;max-width:330px;justify-self:center}
+.process-card video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.process-card video:fullscreen{width:100vw;height:100vh;max-width:none;max-height:none;aspect-ratio:auto;object-fit:contain;background:#000;border:0;border-radius:0}
+.process-card video:-webkit-full-screen{width:100vw;height:100vh;max-width:none;max-height:none;aspect-ratio:auto;object-fit:contain;background:#000;border:0;border-radius:0}
+.process-card figcaption{margin-top:14px;font-size:14px;line-height:1.5;color:var(--muted)}
+@media (max-width:760px){.process-grid{grid-template-columns:1fr;max-width:360px;gap:32px}.process-card{max-width:360px}}
 
 /* Портфолио */
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin:-16px 0 40px}
@@ -185,17 +198,25 @@ ul{list-style:none}
 
 /* Отзывы */
 .slider{position:relative}
-.slider__track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.slider__track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);align-items:start;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
 .slider__track::-webkit-scrollbar{display:none}
-.review{scroll-snap-align:start;border:1px solid var(--line);padding:36px 32px;display:flex;flex-direction:column;background:var(--bg)}
+.review{scroll-snap-align:start;border:1px solid var(--line);padding:36px 32px;display:flex;flex-direction:column;background:var(--bg);min-height:var(--review-h,0)}
 .review__q{font-family:var(--serif);font-size:56px;line-height:.6;color:var(--gold);height:28px}
 .review p{color:var(--soft);font-size:15px;flex:1;margin:12px 0 24px}
 .review b{font-weight:500;display:block}
 .review small{color:var(--muted);font-size:13px}
-.demo{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);background:var(--muted);padding:2px 8px;margin-bottom:14px;align-self:flex-start}
+/* Длинный отзыв обрезается, только когда JS добавил кнопку «Показать ещё» */
+#reviews{--review-clamp:288px}
+.js .review.has-more p{max-height:var(--review-clamp);overflow:hidden}
+.js .review.is-open p{max-height:none;overflow:visible}
+@media (max-width:600px){#reviews{--review-clamp:312px}}
+.review__more{align-self:flex-start;margin:-10px 0 18px;padding:0 0 2px;border:0;border-bottom:1px solid var(--line-2);background:none;color:var(--gold);font:inherit;font-size:13px;letter-spacing:.04em;transition:border-color .2s}
+.review__more:hover{border-color:var(--gold)}
 .slider__ctrl{display:flex;gap:10px;justify-content:flex-end;margin-top:24px}
-.slider__ctrl button{width:48px;height:48px;border:1px solid var(--line-2);background:none;border-radius:50%;font-size:18px}
+.slider__ctrl button{width:48px;height:48px;border:1px solid var(--line-2);background:none;border-radius:50%;font-size:18px;display:grid;place-items:center;transition:transform .12s ease,border-color .2s,color .2s,background-color .2s}
+.slider__ctrl button svg{width:20px;height:20px;display:block}
 .slider__ctrl button:hover{border-color:var(--gold);color:var(--gold)}
+.slider__ctrl button:active{transform:scale(.9);border-color:var(--gold);color:var(--gold);background:rgba(201,166,107,.14)}
 
 /* FAQ */
 .faq{max-width:860px}
@@ -255,11 +276,12 @@ ul{list-style:none}
 .fab.is-open .fab__menu a:nth-child(1){transition-delay:.25s}
 
 /* Кнопка «Наверх» — по центру экрана, в том же стиле, что плавающая кнопка */
-.to-top{position:fixed;right:24px;top:50%;z-index:89;width:56px;height:56px;margin-top:-28px;border-radius:50%;background:var(--gold);color:var(--bg);border:0;display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.4);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.to-top{position:fixed;right:24px;top:50%;z-index:89;width:56px;height:56px;margin-top:-28px;border-radius:50%;background:var(--gold);color:var(--bg);border:0;display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.4);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s,scale .12s,background-color .2s}
 .to-top svg{width:24px;height:24px}
 .to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
 .to-top.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
 .to-top:hover{background:var(--gold-2)}
+.to-top:active{scale:.9;background:var(--gold-2)}
 .to-top:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* Документ (политика) */
@@ -412,6 +434,12 @@ html:has(dialog[open]) .fab,html:has(dialog[open]) .to-top{opacity:0;visibility:
 /* Отложенная отрисовка нижней секции: неподдерживаемые браузеры просто её рисуют как обычно */
 @media (min-width:961px){
   #reviews{content-visibility:auto;contain-intrinsic-size:auto 820px}
+}
+/* Стрелки уходят в правый рельс по центру карточек; от 1280px, чтобы не
+   пересекаться с плавающей кнопкой «Наверх» у правого края экрана */
+@media (min-width:1280px){
+  #reviews .slider{padding-right:72px}
+  #reviews .slider__ctrl{position:absolute;right:0;top:50%;transform:translateY(-50%);flex-direction:column-reverse;justify-content:center;margin-top:0}
 }
 
 /* Печатная версия: без интерактивных блоков */

@@ -248,6 +248,31 @@
     }
   }
 
+  /* ---------- Видео в блоке «Процесс» ----------
+     Не даём двум роликам играть одновременно и останавливаем видео,
+     когда оно уходит с экрана: звук не должен играть из другого блока. */
+  var processVideos = $$("#process video");
+  if (processVideos.length) {
+    processVideos.forEach(function (v) {
+      v.addEventListener("play", function () {
+        processVideos.forEach(function (other) {
+          if (other !== v && !other.paused) other.pause();
+        });
+      });
+    });
+    if ("IntersectionObserver" in window) {
+      var pvio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting && !en.target.paused) en.target.pause();
+        });
+      }, { threshold: 0.2 });
+      processVideos.forEach(function (v) { pvio.observe(v); });
+    }
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) processVideos.forEach(function (v) { if (!v.paused) v.pause(); });
+    });
+  }
+
   /* ---------- Портфолио ---------- */
   var grid = $("#grid"), filters = $("#filters"), current = "all";
   function renderFilters() {
@@ -376,6 +401,71 @@
     });
   });
 
+  /* ---------- Отзывы: «Показать ещё» ----------
+     CSS обрезает текст до 10 строк только при включённом JS. Кнопку
+     добавляем, если строк больше; измеряем при подходе блока к экрану,
+     потому что у секции content-visibility. */
+  var reviewsSection = $("#reviews");
+  var reviewCards = reviewsSection ? $$(".review", reviewsSection) : [];
+  function fitReviews() {
+    if (!reviewsSection || !track) return;
+    var clamp = parseInt(getComputedStyle(reviewsSection).getPropertyValue("--review-clamp"), 10) || 288;
+    /* Сбрасываем общую высоту, чтобы измерить карточки по содержимому */
+    track.style.setProperty("--review-h", "0px");
+    reviewCards.forEach(function (card, i) {
+      var text = card.querySelector("p");
+      if (!text || card.classList.contains("is-open") || !text.clientHeight) return;
+      var btn = card.querySelector(".review__more");
+      var long = text.scrollHeight > clamp + 8;
+      if (long && !btn) {
+        if (!text.id) text.id = "review-text-" + (i + 1);
+        card.classList.add("has-more");
+        var more = el("button", {
+          "class": "review__more",
+          type: "button",
+          "aria-expanded": "false",
+          "aria-controls": text.id,
+          text: "Показать ещё"
+        });
+        more.addEventListener("click", function () {
+          var open = !card.classList.contains("is-open");
+          card.classList.toggle("is-open", open);
+          more.setAttribute("aria-expanded", String(open));
+          more.textContent = open ? "Свернуть" : "Показать ещё";
+          if (!open) fitReviews();
+        });
+        text.parentNode.insertBefore(more, text.nextSibling);
+      } else if (!long && btn) {
+        card.classList.remove("has-more");
+        card.classList.remove("is-open");
+        btn.parentNode.removeChild(btn);
+      }
+    });
+    /* Все свёрнутые карточки — одной высоты по самой высокой из них */
+    var max = 0;
+    reviewCards.forEach(function (card) {
+      if (card.classList.contains("is-open")) return;
+      if (card.offsetHeight > max) max = card.offsetHeight;
+    });
+    if (max) track.style.setProperty("--review-h", max + "px");
+  }
+  if (reviewsSection) {
+    if ("IntersectionObserver" in window) {
+      var rio = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { fitReviews(); rio.disconnect(); }
+      }, { rootMargin: "300px" });
+      rio.observe(reviewsSection);
+    } else {
+      fitReviews();
+    }
+    var fitTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(fitTimer);
+      fitTimer = setTimeout(fitReviews, 150);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitReviews);
+  }
+
   /* ---------- Частые вопросы: плавное раскрытие ----------
      Нативный <details> открывается мгновенно, поэтому высоту ответа
      анимируем сами: оборачиваем содержимое и переводим высоту с 0 на
@@ -434,14 +524,37 @@
   });
 
   /* ---------- Копирование телефона ---------- */
+  function copyText(v, done) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(v).then(function () { done(true); }, function () { done(false); });
+    } else {
+      done(false);
+    }
+  }
   $$("[data-copy]").forEach(function (b) {
     b.addEventListener("click", function () {
-      var v = b.getAttribute("data-copy");
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(v).then(function () { b.textContent = "Скопировано"; setTimeout(function () { b.textContent = "Скопировать"; }, 2000); });
-      }
+      copyText(b.getAttribute("data-copy"), function (ok) {
+        if (!ok) return;
+        b.textContent = "Скопировано";
+        setTimeout(function () { b.textContent = "Скопировать"; }, 2000);
+      });
     });
   });
+  /* Строка Макса: копируем номер и открываем max.ru в новой вкладке */
+  var maxRow = $("#max-copy");
+  if (maxRow) {
+    var maxVal = maxRow.querySelector(".val");
+    var maxValText = maxVal ? maxVal.textContent : "";
+    var maxTimer;
+    maxRow.addEventListener("click", function () {
+      copyText(maxRow.getAttribute("data-copy-phone"), function (ok) {
+        if (!ok || !maxVal) return;
+        clearTimeout(maxTimer);
+        maxVal.textContent = "Номер скопирован";
+        maxTimer = setTimeout(function () { maxVal.textContent = maxValText; }, 2000);
+      });
+    });
+  }
 
   /* ---------- Плавающая кнопка ---------- */
   var fabBtn = $(".fab__btn"), fabMenu = $("#fab-menu"), fab = $(".fab");

@@ -1,0 +1,7 @@
+# Контакт для сообщений об уязвимостях сайта. ЗАМЕНИТЬ домен.
+# Срок действия поля Expires — не позднее 21.10.2027 (RFC 9116).
+Contact: mailto:Lna.ru@rambler.ru
+Contact: tel:+79279450878
+Expires: 2027-10-21T00:00:00.000Z
+Preferred-Languages: ru
+Canonical: https://example.ru/.well-known/security.txt

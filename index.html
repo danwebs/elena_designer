@@ -69,9 +69,7 @@
       ],
       "knowsLanguage": ["ru"],
       "sameAs": [
-        "https://vk.ru/ВАШ_НИК",
-        "https://max.ru/u/ВАШ_ТОКЕН",
-        "https://telegram.org/",
+        "https://vk.ru/lena_dizain",
         "https://www.instagram.com/_elena.designer/"
       ]
     },
@@ -86,8 +84,8 @@
         "https://example.ru/assets/img/projects/cafe-01.jpg",
         "https://example.ru/assets/img/projects/green-flat-02.jpg"
       ],
-      "telephone": "+79000000000",
-      "email": "hello@example.ru",
+      "telephone": "+79279450878",
+      "email": "Lna.ru@rambler.ru",
       "priceRange": "$$",
       "currenciesAccepted": "RUB",
       "paymentAccepted": "Самозанятость (НПД), безналичный перевод, наличные",
@@ -119,9 +117,7 @@
       "employee": { "@id": "https://example.ru/#elena" },
       "availableLanguage": { "@type": "Language", "name": "Russian", "alternateName": "ru" },
       "sameAs": [
-        "https://vk.ru/ВАШ_НИК",
-        "https://max.ru/u/ВАШ_ТОКЕН",
-        "https://telegram.org/",
+        "https://vk.ru/lena_dizain",
         "https://www.instagram.com/_elena.designer/"
       ],
       "hasOfferCatalog": {
@@ -409,10 +405,36 @@
         <li class="step"><span class="step__dot">6</span><h3>Чертежи и комплектация</h3><p>Рабочая документация, ведомости материалов и мебели</p></li>
         <li class="step"><span class="step__dot">7</span><h3>Надзор и приёмка</h3><p>Контроль на объекте до финального результата</p></li>
       </ol>
+      <a class="steps__link" href="#process">Посмотреть, как проходит работа <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
-  <!-- 5. Портфолио (карточки строятся из assets/js/data.js) -->
+  <!-- 5. Как проходит работа -->
+  <section class="section" id="process">
+    <div class="container">
+      <span class="kicker">Процесс</span>
+      <h2 class="h2">Как это выглядит <em>вживую</em></h2>
+      <p class="lead">Работа над проектом и печатные материалы, которые получает заказчик.</p>
+      <div class="process-grid">
+        <figure class="process-card reveal">
+          <video controls preload="metadata" playsinline poster="assets/img/process-design.jpg" width="720" height="1280" aria-label="Разработка дизайн-проекта: планировка и рабочая документация">
+            <source src="assets/video/process-design.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video>
+          <figcaption>Разработка проекта: планировка, чертежи и рабочая документация</figcaption>
+        </figure>
+        <figure class="process-card reveal">
+          <video controls preload="metadata" playsinline poster="assets/img/process-print.jpg" width="720" height="1280" aria-label="Печатные материалы: что заказчик получает на руки">
+            <source src="assets/video/process-print.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video>
+          <figcaption>Печатные материалы: что заказчик получает на руки</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Портфолио (карточки строятся из assets/js/data.js) -->
   <section class="section section--alt" id="portfolio">
     <div class="container">
       <span class="kicker">Портфолио</span>
@@ -449,7 +471,7 @@
     </div>
   </dialog>
 
-  <!-- 6. До / после -->
+  <!-- 7. До / после -->
   <section class="section" id="compare">
     <div class="container compare-wrap">
       <div class="reveal">
@@ -469,29 +491,30 @@
     </div>
   </section>
 
-  <!-- 7. Отзывы -->
+  <!-- 8. Отзывы -->
   <section class="section" id="reviews">
     <div class="container">
       <span class="kicker">Отзывы</span>
       <h2 class="h2">Что говорят клиенты</h2>
-      <!-- ВНИМАНИЕ: ниже ПРИМЕРЫ. Перед публикацией замените на реальные отзывы клиентов
-           (с их согласия) и удалите метки «пример». Вымышленные отзывы — недостоверная реклама (ст. 5 38-ФЗ). -->
+      <!-- Отзывы клиентов; опубликованы с согласия авторов. -->
       <div class="slider">
         <div class="slider__track" id="reviews-track" tabindex="0" role="region" aria-label="Отзывы клиентов">
-          <article class="review"><span class="demo">пример</span><span class="review__q" aria-hidden="true">“</span><p>Делали квартиру в Уфе, пока сами жили в Туймазах. Елена взяла на себя всё — от обмеров до общения со строителями. Ни одной ссоры за полгода ремонта!</p><b>Имя клиента</b><small>Квартира 78 м², Уфа</small></article>
-          <article class="review"><span class="demo">пример</span><span class="review__q" aria-hidden="true">“</span><p>Больше всего понравились варианты планировки: из неудобной «трёшки» получилась квартира, где у каждого есть своё место.</p><b>Имя клиента</b><small>Квартира 64 м², Туймазы</small></article>
-          <article class="review"><span class="demo">пример</span><span class="review__q" aria-hidden="true">“</span><p>3D-визуализация совпала с итогом один в один. Уложились в смету, хотя я была уверена, что это невозможно.</p><b>Имя клиента</b><small>Дом 140 м², Октябрьский</small></article>
-          <article class="review"><span class="demo">пример</span><span class="review__q" aria-hidden="true">“</span><p>Сначала показали концепт за четыре дня — стало понятно, куда двигаться. Потом чертежи и надзор: работали со своей бригадой, всё по проекту.</p><b>Имя клиента</b><small>Квартира 52 м², удалённо</small></article>
+          <article class="review"><span class="review__q" aria-hidden="true">“</span><p>По рекомендации родственников, которые обращались к дизайнеру Елене Габдрафиковой, также пригласили её сделать дизайн-проект для нашего дома. Дом покупали, не строили сами, поэтому были претензии к планировке, да и время подошло сделать ремонт. Дом около 120 кв. м, Елена настолько логично, удобно и рационально предложила переделать пространство, учла все наши пожелания, что спустя несколько лет продолжаем любоваться интерьером. Поэтому, когда сын купил квартиру, не раздумывая снова обратились к ней. Елена ещё раз подтвердила свой высокий профессионализм и безупречный вкус. Она сотрудничает с производителями мебели, которые могут воплотить любую идею. Причём учла соотношение цены и качества, предложила оптимальные варианты при подборе материалов. Квартира в 60 кв. м получается очень стильной, уютной и удобной, в которой будет комфортно молодой семье. Работы проведены в городе Туймазы.</p><b>Гузель Д</b><small>Квартира 60 м² и дом 120 м², Туймазы</small></article>
+          <article class="review"><span class="review__q" aria-hidden="true">“</span><p>Я и не представляла, что одним днём, с выездом по магазинам, можно подобрать всё необходимое — плитку в санузлы, полы, обои. Получилось очень удобно и продуктивно. Сразу всё закупили и оформили доставку. Строители быстро принялись к чистовой отделке. Благодарю Елену за профессионализм!</p><b>Вероника Х</b><small>Квартира 55,6 м², Московская область, г. Апрелевка</small></article>
+          <article class="review"><span class="review__q" aria-hidden="true">“</span><p>Дорогая Елена! Спасибо большое за прекрасную работу! Вживую всё выглядит очень красиво и гармонично. Мебель подобрана со вкусом, каждая деталь на своём месте. Видно, что у вас прекрасное чувство стиля и настоящий талант создавать красоту. Очень приятно, когда результат превосходит ожидания!</p><b>Гульнара Ш</b><small>Туймазы</small></article>
+          <article class="review"><span class="review__q" aria-hidden="true">“</span><p>Благодарю за разработку проекта и подбор мебели. Работа выполнена профессионально, с большим вниманием к деталям и общей концепции интерьера. Все решения продуманы, мебель подобрана гармонично и со вкусом. Осталась довольна сотрудничеством и с удовольствием рекомендую Елену!!! Спасибо.</p><b>Амира Ш</b><small>Туймазы</small></article>
+          <article class="review"><span class="review__q" aria-hidden="true">“</span><p>Дорогая Елена! Спасибо за великолепную работу! Проект и подбор мебели выполнены со вкусом, всё гармонично сочетается между собой. Очень приятно работать с человеком, который чувствует стиль, умеет слышать пожелания и воплощать их в красивых решениях. Рекомендую от души!</p><b>Чулпан С</b><small>Туймазы</small></article>
+          <article class="review"><span class="review__q" aria-hidden="true">“</span><p>Хочу выразить большую благодарность Елене дизайнеру за проделанную работу! Очень понравился подход к проекту, внимание к деталям и подбор мебели. Всё подобрано со вкусом, гармонично и с учётом пожеланий. Было очень приятно сотрудничать! Спасибо за профессионализм, творческий подход и помощь в создании красивого и уютного пространства.</p><b>Гульнара Ш</b><small>Туймазы</small></article>
         </div>
         <div class="slider__ctrl">
-          <button type="button" data-slide="-1" aria-label="Предыдущий отзыв">←</button>
-          <button type="button" data-slide="1" aria-label="Следующий отзыв">→</button>
+          <button type="button" data-slide="-1" aria-label="Предыдущий отзыв"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></button>
+          <button type="button" data-slide="1" aria-label="Следующий отзыв"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. Вопросы -->
+  <!-- 9. Вопросы -->
   <section class="section section--alt" id="faq">
     <div class="container">
       <span class="kicker">Вопросы</span>
@@ -509,7 +532,7 @@
     </div>
   </section>
 
-  <!-- 9. Контакты -->
+  <!-- 10. Контакты -->
   <section class="section" id="contacts">
     <div class="container contacts">
       <div class="reveal">
@@ -517,21 +540,13 @@
         <h2 class="h2">Обсудим <em>ваш интерьер</em></h2>
         <p class="lead">Напишите в удобный мессенджер или позвоните. Расскажите о квартире или доме — я отвечу и подскажу, какой формат подойдёт.</p>
         <p class="note">Туймазы · Уфа · Октябрьский · Белебей · Бавлы · Дюртюли · Стерлитамак · Нефтекамск · Набережные Челны · удалённо по России</p>
-        <p class="note">Основные каналы связи — MAX и Telegram. Instagram* в России ограничен: часть работ дублирую в MAX, Telegram и ВКонтакте.</p>
+        <p class="note">Основные каналы связи — Макс, WhatsApp и ВКонтакте. Instagram* в России ограничен: часть работ дублирую в Макс и ВКонтакте.</p>
       </div>
       <ul class="contact-list reveal">
-        <!-- ЗАМЕНИТЬ: номер телефона в трёх местах ниже и в плавающей кнопке -->
-        <li><div class="row"><a href="tel:+79000000000"><span><span class="lbl">Телефон</span><span class="val">+7 (900) 000-00-00</span></span></a><button class="copy" type="button" data-copy="+79000000000">Скопировать</button></div></li>
-        <!-- ЗАМЕНИТЬ: ссылка на профиль в MAX. В MAX нет постоянных ссылок с никнеймом —
-             профиль → «Пригласить по ссылке» → скопировать ссылку вида https://max.ru/u/ТОКЕН -->
-        <li><a href="https://max.ru/u/ВАШ_ТОКЕН" target="_blank" rel="noopener noreferrer"><span><span class="lbl">Мессенджер MAX</span><span class="val">Написать в MAX</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
-        <li><a href="https://wa.me/79000000000" target="_blank" rel="noopener noreferrer"><span><span class="lbl">WhatsApp</span><span class="val">Написать в WhatsApp</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
-        <!-- ЗАМЕНИТЬ: ссылка на профиль в Telegram. В общем виде t.me/ открывает главную
-             страницу мессенджера; чтобы вела в профиль, укажите ник: https://t.me/ВАШ_НИК -->
-        <li><a href="https://telegram.org/" target="_blank" rel="noopener noreferrer"><span><span class="lbl">Telegram</span><span class="val">Написать в Telegram</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
-        <!-- ЗАМЕНИТЬ: адрес страницы во ВКонтакте. С июля 2026 года VK работает на домене vk.ru -->
-        <li><a href="https://vk.ru/ВАШ_НИК" target="_blank" rel="noopener noreferrer"><span><span class="lbl">ВКонтакте</span><span class="val">Страница ВКонтакте</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
-        <!-- ЗАМЕНИТЬ: ссылка на профиль в Instagram (сервис ограничен в России, см. сноску в подвале) -->
+        <li><div class="row"><a href="tel:+79279450878"><span><span class="lbl">Телефон</span><span class="val">+7 927 945 08 78</span></span></a><button class="copy" type="button" data-copy="+79279450878">Скопировать</button></div></li>
+        <li><a id="max-copy" href="https://max.ru/" target="_blank" rel="noopener noreferrer" data-copy-phone="+79279450878"><span><span class="lbl">Мессенджер Макс</span><span class="val" aria-live="polite">Искать в MAX по номеру</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://wa.me/79279450878" target="_blank" rel="noopener noreferrer"><span><span class="lbl">WhatsApp</span><span class="val">Написать в WhatsApp</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://vk.ru/lena_dizain" target="_blank" rel="noopener noreferrer"><span><span class="lbl">ВКонтакте</span><span class="val">Страница ВКонтакте</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
         <li><a href="https://www.instagram.com/_elena.designer/" target="_blank" rel="noopener noreferrer"><span><span class="lbl">Instagram*</span><span class="val">@_elena.designer</span></span><span class="arr" aria-hidden="true">↗</span></a></li>
       </ul>
     </div>
@@ -553,18 +568,17 @@
       <p>Информация на сайте носит ознакомительный характер и не является публичной офертой (ст. 437 ГК РФ). Стоимость и сроки услуг определяются индивидуально и фиксируются в договоре.</p>
       <p>Сайт не использует файлы cookie, счётчики и сторонние сервисы и не собирает персональные данные через формы. Согласие на обработку персональных данных не требуется, пока на сайте нет форм и счётчиков.</p>
       <p>* Instagram принадлежит компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации. Решение суда распространяется на Facebook и Instagram и не распространяется на деятельность мессенджера WhatsApp. На ресурсах Meta реклама не размещается (Федеральный закон от 07.04.2025 № 72-ФЗ).</p>
-      <p>© <span id="year">2026</span> Е. Габдрафикова. Фотографии и проекты защищены авторским правом (ст. 1259 ГК РФ). Копирование без разрешения запрещено.</p>
+      <p>© <span id="year">2026</span> Е. Габдрафикова. Фотографии, видео и проекты защищены авторским правом (ст. 1259 ГК РФ). Копирование без разрешения запрещено.</p>
     </div>
   </div>
 </footer>
 
 <div class="fab">
   <div class="fab__menu" id="fab-menu" aria-hidden="true">
-    <a href="https://max.ru/u/ВАШ_ТОКЕН" target="_blank" rel="noopener noreferrer">MAX</a>
-    <a href="https://wa.me/79000000000" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer">Telegram</a>
-    <a href="https://vk.ru/ВАШ_НИК" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
-    <a href="tel:+79000000000">Позвонить</a>
+    <a href="https://max.ru/" target="_blank" rel="noopener noreferrer">Макс — по номеру</a>
+    <a href="https://wa.me/79279450878" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a href="https://vk.ru/lena_dizain" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+    <a href="tel:+79279450878">Позвонить</a>
   </div>
   <button class="fab__btn" type="button" aria-controls="fab-menu" aria-expanded="false" aria-label="Связаться">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12Z"/></svg>

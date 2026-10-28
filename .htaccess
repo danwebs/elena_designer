@@ -1,0 +1,50 @@
+# ================================================================
+#  .htaccess для виртуального хостинга Timeweb
+#  Кладётся в папку public_html вместе с index.html
+# ================================================================
+
+AddDefaultCharset UTF-8
+DirectoryIndex index.html
+Options -Indexes
+
+# Правильные типы файлов (нужны из-за защиты nosniff ниже)
+AddType text/html                .html
+AddType text/css                 .css
+AddType application/javascript   .js
+AddType image/svg+xml            .svg
+AddType image/webp               .webp
+AddType video/mp4                .mp4
+AddType font/woff2               .woff2
+AddType text/plain               .txt
+AddType application/xml          .xml
+
+# --- 1. Переадресация на HTTPS и на адрес без www -----------------
+# Включайте ТОЛЬКО после того, как SSL-сертификат выпущен и сайт
+# открывается по https:// (иначе сайт перестанет открываться).
+# Чтобы включить — удалите символ # в начале 5 строк ниже.
+# На Timeweb нужна проверка X-HTTPS (обычное %{HTTPS} off даёт бесконечный редирект).
+# RewriteEngine On
+# RewriteCond %{HTTP:X-HTTPS} !1 [OR]
+# RewriteCond %{HTTP_HOST} ^www\. [NC]
+# RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+# RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# --- 2. Защитные заголовки ------------------------------------------
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; manifest-src 'self'; connect-src 'none'; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  # HSTS — включайте (уберите #) только когда HTTPS работает на основном домене:
+  # Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+# --- 3. Запрет доступа к служебным файлам ----------------------------
+<FilesMatch "\.(md|example|conf|bak|zip|log)$">
+  Require all denied
+</FilesMatch>
+
+# --- 4. Своя страница 404 -------------------------------------------
+ErrorDocument 404 /404.html

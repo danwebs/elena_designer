@@ -1,0 +1,22 @@
+# Исходники фото и экспериментальные кадры: на сайте не используются
+_sources/
+assets/img/16x9/
+
+# Служебные файлы ОС и редакторов
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+
+# Внутренние материалы и dev-инструменты: в публичный репозиторий не нужны
+AGENTS.md
+ПРОЕКТ.md
+РЕШЕНИЯ.md
+СОСТОЯНИЕ.md
+style-test.md
+serve.py
+deploy/
+
+# Python cache
+__pycache__/
+*.pyc
