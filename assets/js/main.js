@@ -408,10 +408,11 @@
   var reviewsSection = $("#reviews");
   var reviewCards = reviewsSection ? $$(".review", reviewsSection) : [];
   function fitReviews() {
-    if (!reviewsSection || !track) return;
+    if (!reviewsSection || !track || !track.parentNode) return;
+    var reviewsSlider = track.parentNode;
     var clamp = parseInt(getComputedStyle(reviewsSection).getPropertyValue("--review-clamp"), 10) || 288;
     /* Сбрасываем общую высоту, чтобы измерить карточки по содержимому */
-    track.style.setProperty("--review-h", "0px");
+    reviewsSlider.style.setProperty("--review-h", "0px");
     reviewCards.forEach(function (card, i) {
       var text = card.querySelector("p");
       if (!text || card.classList.contains("is-open") || !text.clientHeight) return;
@@ -447,7 +448,7 @@
       if (card.classList.contains("is-open")) return;
       if (card.offsetHeight > max) max = card.offsetHeight;
     });
-    if (max) track.style.setProperty("--review-h", max + "px");
+    if (max) reviewsSlider.style.setProperty("--review-h", max + "px");
   }
   if (reviewsSection) {
     if ("IntersectionObserver" in window) {

@@ -439,7 +439,7 @@ html:has(dialog[open]) .fab,html:has(dialog[open]) .to-top{opacity:0;visibility:
    пересекаться с плавающей кнопкой «Наверх» у правого края экрана */
 @media (min-width:1280px){
   #reviews .slider{padding-right:72px}
-  #reviews .slider__ctrl{position:absolute;right:0;top:50%;transform:translateY(-50%);flex-direction:column-reverse;justify-content:center;margin-top:0}
+  #reviews .slider__ctrl{position:absolute;right:0;top:calc(var(--review-h,504px)/2);transform:translateY(-50%);flex-direction:column-reverse;justify-content:center;margin-top:0}
 }
 
 /* Печатная версия: без интерактивных блоков */
